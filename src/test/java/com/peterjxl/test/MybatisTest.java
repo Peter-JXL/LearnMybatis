@@ -2,10 +2,10 @@ package com.peterjxl.test;
 
 import com.peterjxl.dao.IUserDao;
 import com.peterjxl.domain.User;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import com.peterjxl.mybatis.io.Resources;
+import com.peterjxl.mybatis.sqlsession.SqlSession;
+import com.peterjxl.mybatis.sqlsession.SqlSessionFactory;
+import com.peterjxl.mybatis.sqlsession.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -35,8 +35,7 @@ public class MybatisTest {
         }
 
         // 6. 释放资源
-        session.clearCache();
+        session.close();
         in.close();
     }
-
 }
