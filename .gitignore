@@ -1,5 +1,8 @@
 target/
 
+# Log4j日志文件
+axis.log
+
 ## IDEA
 .idea
 

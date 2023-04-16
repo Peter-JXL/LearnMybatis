@@ -1,6 +1,9 @@
 create database LearnMybatis;
 use LearnMybatis;
 
+CREATE USER IF NOT EXISTS LearnMybatisUser@'%' IDENTIFIED BY 'LearnMybatisUserPassword';
+GRANT ALL PRIVILEGES ON learnmybatis.* TO LearnMybatisUser@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL auto_increment,
