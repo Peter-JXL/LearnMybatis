@@ -1,6 +1,6 @@
 package com.peterjxl.mybatis.sqlsession.defaults;
 
-import com.peterjxl.cfg.Configuration;
+import com.peterjxl.mybatis.cfg.Configuration;
 import com.peterjxl.mybatis.sqlsession.SqlSession;
 import com.peterjxl.mybatis.sqlsession.SqlSessionFactory;
 

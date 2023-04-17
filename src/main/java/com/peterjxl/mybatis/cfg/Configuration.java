@@ -1,4 +1,4 @@
-package com.peterjxl.cfg;
+package com.peterjxl.mybatis.cfg;
 
 import java.util.HashMap;
 import java.util.Map;

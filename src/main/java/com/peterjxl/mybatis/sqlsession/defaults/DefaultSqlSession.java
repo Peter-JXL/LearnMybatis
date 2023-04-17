@@ -1,9 +1,9 @@
 package com.peterjxl.mybatis.sqlsession.defaults;
 
-import com.peterjxl.cfg.Configuration;
+import com.peterjxl.mybatis.cfg.Configuration;
 import com.peterjxl.mybatis.sqlsession.SqlSession;
 import com.peterjxl.mybatis.sqlsession.proxy.MapperProxy;
-import com.peterjxl.utils.DataSourceUtil;
+import com.peterjxl.mybatis.utils.DataSourceUtil;
 
 import java.lang.reflect.Proxy;
 import java.sql.Connection;

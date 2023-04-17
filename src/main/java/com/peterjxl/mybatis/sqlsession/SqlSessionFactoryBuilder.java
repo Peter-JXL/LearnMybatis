@@ -1,8 +1,8 @@
 package com.peterjxl.mybatis.sqlsession;
 
-import com.peterjxl.cfg.Configuration;
+import com.peterjxl.mybatis.cfg.Configuration;
 import com.peterjxl.mybatis.sqlsession.defaults.DefaultSqlSessionFactory;
-import com.peterjxl.utils.XMLConfigBuilder;
+import com.peterjxl.mybatis.utils.XMLConfigBuilder;
 
 import java.io.InputStream;
 

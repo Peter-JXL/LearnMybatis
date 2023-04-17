@@ -1,7 +1,7 @@
-package com.peterjxl.utils;
+package com.peterjxl.mybatis.utils;
 
 
-import com.peterjxl.cfg.Mapper;
+import com.peterjxl.mybatis.cfg.Mapper;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;

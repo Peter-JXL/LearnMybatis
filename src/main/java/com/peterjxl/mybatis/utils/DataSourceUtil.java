@@ -1,6 +1,6 @@
-package com.peterjxl.utils;
+package com.peterjxl.mybatis.utils;
 
-import com.peterjxl.cfg.Configuration;
+import com.peterjxl.mybatis.cfg.Configuration;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

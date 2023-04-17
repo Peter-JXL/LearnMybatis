@@ -1,7 +1,7 @@
-package com.peterjxl.utils;
+package com.peterjxl.mybatis.utils;
 
-import com.peterjxl.cfg.Configuration;
-import com.peterjxl.cfg.Mapper;
+import com.peterjxl.mybatis.cfg.Configuration;
+import com.peterjxl.mybatis.cfg.Mapper;
 import com.peterjxl.mybatis.io.Resources;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
@@ -13,7 +13,6 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.lang.reflect.*;
 
 /**
  * @author PeterJXL

@@ -1,7 +1,7 @@
 package com.peterjxl.mybatis.sqlsession.proxy;
 
-import com.peterjxl.cfg.Mapper;
-import com.peterjxl.utils.Executor;
+import com.peterjxl.mybatis.cfg.Mapper;
+import com.peterjxl.mybatis.utils.Executor;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
