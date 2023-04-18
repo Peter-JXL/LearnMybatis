@@ -1,5 +1,6 @@
 package com.peterjxl.dao;
 
+import com.peterjxl.domain.QueryVo;
 import com.peterjxl.domain.User;
 
 import java.util.List;
@@ -51,4 +52,11 @@ public interface IUserDao {
      * @return
      */
     int findTotal();
+
+    /**
+     * 根据QueryVo中的条件查询用户
+     * @param vo
+     * @return
+     */
+    List<User> findUserByVo(QueryVo vo);
 }

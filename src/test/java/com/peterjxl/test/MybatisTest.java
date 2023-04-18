@@ -1,6 +1,7 @@
 package com.peterjxl.test;
 
 import com.peterjxl.dao.IUserDao;
+import com.peterjxl.domain.QueryVo;
 import com.peterjxl.domain.User;
 
 import org.apache.ibatis.io.Resources;
@@ -108,9 +109,30 @@ public class MybatisTest {
         }
     }
 
+    /**
+     * 测试查询总记录条数
+     */
     @Test
     public void testFindTotal(){
         int total = userDao.findTotal();
         System.out.println("total: " + total);
+    }
+
+    /**
+     * 测试使用QueryVo作为查询条件
+     */
+    @Test
+    public void testFindByVo(){
+
+        User user = new User();
+        user.setUsername("mybatis%");
+
+        QueryVo vo = new QueryVo();
+        vo.setUser(user);
+
+        List<User> users = userDao.findUserByVo(vo);
+        for(User u : users){
+            System.out.println(u);
+        }
     }
 }
