@@ -40,12 +40,12 @@
     </delete>
 
     <!-- 根据ID查询用户 -->
-    <select id="findById" parameterType="INT" resultType="com.peterjxl.domain.User">
+    <select id="findById" parameterType="INT" resultMap="userMap">
         select * from user where id = #{uid}
     </select>
 
     <!-- 根据名称查询用户 -->
-    <select id="findByName" parameterType="string" resultType="com.peterjxl.domain.User">
+    <select id="findByName" parameterType="string"  resultMap="userMap">
         select * from user where username like #{name}
     </select>
 
