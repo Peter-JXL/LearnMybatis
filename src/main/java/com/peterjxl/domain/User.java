@@ -1,13 +1,12 @@
 package com.peterjxl.domain;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class User implements Serializable {
     private Integer id;
     private String username;
-    private LocalDateTime birthday;
+    private Date birthday;
     private String sex;
     private String address;
 
@@ -27,11 +26,11 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public LocalDateTime getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDateTime birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
