@@ -61,26 +61,25 @@ public class MybatisTest {
     @Test
     public void testSave() throws IOException {
         User user = new User();
-        user.setUsername("mybatis saveuser");
-        user.setAddress("广州市番禺区");
-        user.setSex("男");
-        user.setBirthday(new Date());
+        user.setUserName("mybatis saveuser");
+        user.setUserAddress("广州市番禺区");
+        user.setUserSex("男");
+        user.setUserBirthday(new Date());
 
         System.out.println("保存操作之前：: " + user);
         userDao.saveUser(user);
         System.out.println("保存操作之前：: " + user);
         session.commit();
-
     }
 
     @Test
     public void testUpdate(){
         User user = new User();
-        user.setId(41); //张三的数据
-        user.setUsername("mybatis update user");
-        user.setAddress("广州市番禺区");
-        user.setSex("男");
-        user.setBirthday(new Date());
+        user.setUserId(41); //张三的数据
+        user.setUserName("mybatis update user");
+        user.setUserAddress("广州市番禺区");
+        user.setUserSex("男");
+        user.setUserBirthday(new Date());
 
         // 5. 使用代理对象执行方法
         userDao.updateUser(user);
@@ -125,7 +124,7 @@ public class MybatisTest {
     public void testFindByVo(){
 
         User user = new User();
-        user.setUsername("mybatis%");
+        user.setUserName("mybatis%");
 
         QueryVo vo = new QueryVo();
         vo.setUser(user);
