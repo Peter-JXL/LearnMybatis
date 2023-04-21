@@ -2,6 +2,7 @@ package com.peterjxl.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class User implements Serializable {
     private Integer userId;
@@ -9,6 +10,15 @@ public class User implements Serializable {
     private Date userBirthday;
     private String userSex;
     private String userAddress;
+    private List<Account> accounts;
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
 
     public Integer getUserId() {
         return userId;

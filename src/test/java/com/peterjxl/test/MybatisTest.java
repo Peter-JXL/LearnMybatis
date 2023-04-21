@@ -55,7 +55,8 @@ public class MybatisTest {
         // 5. 使用代理对象执行方法
         List<User> users = userDao.findAll();
         for(User user : users){
-            System.out.println(user);
+            System.out.print(user);
+            System.out.println(user.getAccounts());
         }
     }
 
