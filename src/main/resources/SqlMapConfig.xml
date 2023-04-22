@@ -6,19 +6,11 @@
 <!-- Mybatis的主配置文件 -->
 <configuration>
 
-    <!--配置环境-->
     <environments default="mysql">
         <environment id="mysql">
-            <!-- 配置事务的类型 -->
             <transactionManager type="JDBC"/>
-
-            <!-- 配置数据源（连接池） -->
-            <dataSource type="POOLED">
-                <!-- 配置连接数据库的4个基本信息 -->
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql:///LearnMybatis"/>
-                <property name="username" value="LearnMybatisUser"/>
-                <property name="password" value="LearnMybatisUserPassword"/>
+            <dataSource type="JNDI">
+                <property name="data_source" value="java:comp/env/jdbc/LearnMybatis"/>
             </dataSource>
         </environment>
     </environments>
