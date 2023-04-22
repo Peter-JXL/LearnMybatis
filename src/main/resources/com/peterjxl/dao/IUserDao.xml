@@ -28,16 +28,30 @@
         </collection>
     </resultMap>
 
+    <resultMap id="userRoleMap" type="user">
+        <id property="userId" column="id"/>
+        <result property="userName" column="userName"/>
+        <result property="userAddress" column="address"/>
+        <result property="userSex" column="sex"/>
+        <result property="userBirthday" column="birthday"/>
+        <!-- 配置user对象中account集合的映射 -->
+        <collection property="roles" ofType="role">
+            <id property="roleID" column="rid"/>
+            <result property="roleName" column="role_name"/>
+            <result property="roleDesc" column="role_desc"/>
+        </collection>
+    </resultMap>
 
     <sql id="defaultUser">
         select * from user
     </sql>
     
     <!-- 配置查询所有用户，id要写方法名称-->
-    <select id="findAll" resultMap="userAccountMap">
-        select u.*, a.ID aid, a.UID, a.MONEY
-        from user u LEFT JOIN account a
-        on u.id  = a.UID
+    <select id="findAll" resultMap="userRoleMap">
+        SELECT u.*, r.id as rid, r.ROLE_NAME, r.ROLE_DESC
+        FROM user u
+        LEFT JOIN user_role ur on u.ID = ur.UID
+        LEFT JOIN role r on r.id = ur.RID
     </select>
 
     <!-- 保存用户 -->
