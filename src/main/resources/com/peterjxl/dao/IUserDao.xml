@@ -3,8 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.peterjxl.dao.IUserDao">
+    <cache/>
     <!-- 配置查询所有用户，id要写方法名称-->
     <select id="findAll" resultType="com.peterjxl.domain.User">
         select * from user
     </select>
+
+    <!-- 根据ID查询用户 -->
+    <select id="findById" parameterType="INT" resultType="com.peterjxl.domain.User" useCache="true">
+        select * from user where id = #{uid}
+    </select>
+
+    <update id="updateUser" parameterType="com.peterjxl.domain.User">
+        update user
+        set username=#{username}, address=#{address}, sex=#{sex}, birthday=#{birthday}
+        where id=#{id}
+    </update>
+
 </mapper>
