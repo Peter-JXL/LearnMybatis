@@ -21,11 +21,7 @@
         <result property="userSex" column="sex"/>
         <result property="userBirthday" column="birthday"/>
         <!-- 配置user对象中account集合的映射 -->
-        <collection property="accounts" ofType="account">
-            <id property="id" column="aid"/>
-            <result property="uid" column="uid"/>
-            <result property="money" column="money"/>
-        </collection>
+        <collection property="accounts" ofType="account" select="com.peterjxl.dao.IAccountDao.findAccountByUID" column="id"/>
     </resultMap>
 
     <resultMap id="userRoleMap" type="user">
@@ -47,11 +43,8 @@
     </sql>
     
     <!-- 配置查询所有用户，id要写方法名称-->
-    <select id="findAll" resultMap="userRoleMap">
-        SELECT u.*, r.id as rid, r.ROLE_NAME, r.ROLE_DESC
-        FROM user u
-        LEFT JOIN user_role ur on u.ID = ur.UID
-        LEFT JOIN role r on r.id = ur.RID
+    <select id="findAll" resultMap="userAccountMap">
+        SELECT * FROM user u
     </select>
 
     <!-- 保存用户 -->

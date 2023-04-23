@@ -10,17 +10,11 @@
         <result property="uid" column="uid"/>
         <result property="money" column="money"/>
         <!--  建立一对一的关系映射，配置封装user的内容      -->
-        <association property="user" column="uid" javaType="user">
-            <id property="userId" column="id"/>
-            <result property="userName" column="username"/>
-            <result property="userAddress" column="address"/>
-        </association>
+        <association property="user" column="uid" javaType="user" select="com.peterjxl.dao.IUserDao.findById"/>
     </resultMap>
 
     <select id="findAll" resultMap="accountUserMap">
-        SELECT a.*, u.username, u.address
-        FROM account a, user u
-        WHERE u.id = a.UID
+        SELECT * from account
     </select>
 
     <!-- 查询所有账户，同时包含用户名和地址信息   -->
@@ -28,5 +22,11 @@
         SELECT a.*, u.username, u.address
         FROM account a, user u
         WHERE u.id = a.UID
+    </select>
+
+    <!--根据用户ID查询账户列表  -->
+    <select id="findAccountByUID" resultType="account">
+        SELECT * from account
+        where uid = #{uid}
     </select>
 </mapper>

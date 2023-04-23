@@ -16,6 +16,11 @@
 <!--        <property name="password" value="LearnMybatisUserPassword"/>-->
 <!--    </properties>-->
 
+    <settings>
+        <!-- 开启Mybatis支持延迟加载 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
 
     <typeAliases>
         <!--typeAlias用于配置别名。type属性指定的是实体类全限定类名。alias属性指定别名，当指定了别名就再区分大小写 -->
