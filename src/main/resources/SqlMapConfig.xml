@@ -2,59 +2,27 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
-
-<!-- Mybatis的主配置文件 -->
 <configuration>
-
-
-
     <properties resource="jdbcConfig.properties"/>
-<!--    <properties>-->
-<!--        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>-->
-<!--        <property name="url" value="jdbc:mysql:///LearnMybatis"/>-->
-<!--        <property name="username" value="LearnMybatisUser"/>-->
-<!--        <property name="password" value="LearnMybatisUserPassword"/>-->
-<!--    </properties>-->
-
-    <settings>
-        <!-- 开启Mybatis支持延迟加载 -->
-        <setting name="lazyLoadingEnabled" value="true"/>
-        <setting name="aggressiveLazyLoading" value="false"/>
-    </settings>
 
     <typeAliases>
-        <!--typeAlias用于配置别名。type属性指定的是实体类全限定类名。alias属性指定别名，当指定了别名就再区分大小写 -->
-        <!-- <typeAlias type="com.peterjxl.domain.User" alias="user"/>-->
-        <!-- 用于指定要配置别名的包，当指定之后，该包下的实体类都会注册别名，并且类名就是别名，不再区分大小写-->
         <package name="com.peterjxl.domain"/>
     </typeAliases>
 
-
-
-    <!--配置环境-->
     <environments default="mysql">
         <environment id="mysql">
-            <!-- 配置事务的类型 -->
             <transactionManager type="JDBC"/>
-
-            <!-- 配置数据源（连接池） -->
             <dataSource type="POOLED">
-                <!-- 配置连接数据库的4个基本信息 -->
-                <property name="driver" value="${driver}"/>
-                <property name="url" value="${url}"/>
-                <property name="username" value="${username}"/>
-                <property name="password" value="${password}"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
-
-    <!--
-        指定映射配置文件的位置，映射配置文件指的是每个dao独立的配置文件
-        如果是用注解来配置的话，此处应该使用class属性指定被注解的dao全限定类名
-    -->
+    
     <mappers>
-        <!--<mapper resource="com/peterjxl/dao/IUserDao.xml"/>-->
-        <!--<mapper class="com.peterjxl.dao.IUserDao"/>-->
+        <!-- 指定带有注解的dao接口所在位置 -->
         <package name="com.peterjxl.dao"/>
     </mappers>
 </configuration>

@@ -1,76 +1,33 @@
 package com.peterjxl.dao;
 
-import com.peterjxl.domain.QueryVo;
 import com.peterjxl.domain.User;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
 public interface IUserDao {
-
-    /**
-     * 查询所有用户
-     * @return
-     */
-
-
+    @Select("select * from user")
     List<User> findAll();
 
-    /**
-     * 保存新增的用户
-     * @param user
-     */
+    @Insert("insert into user(username, address, sex, birthday) values (#{username}, #{address}, #{sex}, #{birthday})")
     void saveUser(User user);
 
-    /**
-     * 更新用户
-     * @param user
-     */
+    @Update("update user set username=#{username}, address=#{address}, sex=#{sex}, birthday=#{birthday}  where id=#{id}")
     void updateUser(User user);
 
-    /**
-     * 删除用户
-     * @param userId
-     */
+    @Delete("delete from user where id=#{id}")
     void deleteUser(Integer userId);
 
-    /**
-     * 根据id查询用户信息
-     * @param userId
-     * @return
-     */
-    User findById(Integer userId);
+    @Select("select * from user where id=#{id}")
+    User findById(Integer id);
 
-    /**
-     * 根据名称模糊查询用户信息
-     * @param name
-     * @return
-     */
-    List<User> findByName(String name);
+    //@Select("select * from user where username like #{username}")
+    @Select("select * from user where username like '%${value}%'")
+    List<User> findUserByName(String username);
 
-    /**
-     * 查询总用户数
-     * @return
-     */
-    int findTotal();
-
-    /**
-     * 根据QueryVo中的条件查询用户
-     * @param vo
-     * @return
-     */
-    List<User> findUserByVo(QueryVo vo);
-
-    /**
-     * 根据传入参数条件查询
-     * @param user 查询的条件，有可能有用户名，有可能有性别，有可能有地址，有可能都有，也可能没有
-     * @return
-     */
-    List<User> findUserByCondition(User user);
-
-    /**
-     * 根据QueryVo提供的id集合，查询用户信息
-     * @param vo
-     * @return
-     */
-    List<User> findUserInIds(QueryVo vo );
+    @Select("select count(*) from user")
+    int findTotalUser();
 }

@@ -2,83 +2,62 @@ package com.peterjxl.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 public class User implements Serializable {
-    private Integer userId;
-    private String userName;
-    private Date userBirthday;
-    private String userSex;
-    private String userAddress;
-    private List<Account> accounts;
+    private Integer id;
+    private String username;
+    private String address;
+    private String sex;
+    private Date birthday;
 
-    //多对多的关系映射：一个用户可以具备多个角色
-    private List<Role> roles;
-
-    public List<Role> getRoles() {
-        return roles;
+    public Integer getId() {
+        return id;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public List<Account> getAccounts() {
-        return accounts;
+    public String getUsername() {
+        return username;
     }
 
-    public void setAccounts(List<Account> accounts) {
-        this.accounts = accounts;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getSex() {
+        return sex;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public Date getUserBirthday() {
-        return userBirthday;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setUserBirthday(Date userBirthday) {
-        this.userBirthday = userBirthday;
-    }
-
-    public String getUserSex() {
-        return userSex;
-    }
-
-    public void setUserSex(String userSex) {
-        this.userSex = userSex;
-    }
-
-    public String getUserAddress() {
-        return userAddress;
-    }
-
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", userBirthday=" + userBirthday +
-                ", userSex='" + userSex + '\'' +
-                ", userAddress='" + userAddress + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", address='" + address + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthday=" + birthday +
                 '}';
     }
 }

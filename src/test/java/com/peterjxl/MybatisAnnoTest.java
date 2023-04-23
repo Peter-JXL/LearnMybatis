@@ -1,9 +1,9 @@
-package com.peterjxl.test;
+package com.peterjxl;
 
 import com.peterjxl.dao.IUserDao;
-import com.peterjxl.dao.impl.UserDaoImpl;
 import com.peterjxl.domain.User;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
@@ -15,20 +15,27 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
-public class MybatisTestImpl {
+public class MybatisAnnoTest {
 
     private InputStream in;
+    private SqlSessionFactoryBuilder builder;
+    private SqlSessionFactory factory;
+    private SqlSession session;
     private IUserDao userDao;
 
     @Before
     public void init() throws IOException {
         in = Resources.getResourceAsStream("SqlMapConfig.xml");
-        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
-        userDao = new UserDaoImpl(factory);
+        builder = new SqlSessionFactoryBuilder();
+        factory = builder.build(in);
+        session = factory.openSession();
+        userDao = session.getMapper(IUserDao.class);
     }
 
     @After
-    public void destory() throws IOException {
+    public void destroy() throws IOException {
+        session.commit();
+        session.close();
         in.close();
     }
 
@@ -41,33 +48,30 @@ public class MybatisTestImpl {
     }
 
     @Test
-    public void testSave() throws IOException {
+    public void testSaveUser(){
         User user = new User();
-        user.setUserName("dao impl user");
-        user.setUserAddress("广州市番禺区");
-        user.setUserSex("男");
-        user.setUserBirthday(new Date());
-
-        System.out.println("保存操作之前：: " + user);
+        user.setUsername("mybatis anno save user");
+        user.setAddress("广州市番禺区");
+        user.setSex("男");
+        user.setBirthday(new Date());
         userDao.saveUser(user);
-        System.out.println("保存操作之前：: " + user);
     }
 
     @Test
     public void testUpdate(){
         User user = new User();
-        user.setUserId(41); //张三的数据
-        user.setUserName("mybatis update impl user");
-        user.setUserAddress("广州市番禺区");
-        user.setUserSex("男");
-        user.setUserBirthday(new Date());
-
+        user.setId(41);
+        user.setUsername("mybatis anno update user");
+        user.setAddress("广州市番禺区");
+        user.setSex("男");
+        user.setBirthday(new Date());
         userDao.updateUser(user);
+        session.commit();
     }
 
     @Test
     public void testDelete(){
-        userDao.deleteUser(55);
+        userDao.deleteUser(56);
     }
 
     @Test
@@ -76,10 +80,10 @@ public class MybatisTestImpl {
         System.out.println(user);
     }
 
-
     @Test
     public void testFindByName(){
-        List<User> users = userDao.findByName("mybatis%");
+//        List<User> users = userDao.findUserByName("mybatis%");
+        List<User> users = userDao.findUserByName("mybatis");
         for(User user : users){
             System.out.println(user);
         }
@@ -87,9 +91,8 @@ public class MybatisTestImpl {
 
     @Test
     public void testFindTotal(){
-        int total = userDao.findTotal();
+        int total = userDao.findTotalUser();
         System.out.println("total: " + total);
     }
-
 
 }
