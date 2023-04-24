@@ -43,30 +43,9 @@ public class MybatisAnnoTest {
     public void testFindAll(){
         List<User> users = userDao.findAll();
         for(User user : users){
-            System.out.println(user);
+            System.out.print(user);
+            System.out.println(user.getAccounts());
         }
-    }
-
-    @Test
-    public void testSaveUser(){
-        User user = new User();
-        user.setUsername("mybatis anno save user");
-        user.setAddress("广州市番禺区");
-        user.setSex("男");
-        user.setBirthday(new Date());
-        userDao.saveUser(user);
-    }
-
-    @Test
-    public void testUpdate(){
-        User user = new User();
-        user.setId(41);
-        user.setUsername("mybatis anno update user");
-        user.setAddress("广州市番禺区");
-        user.setSex("男");
-        user.setBirthday(new Date());
-        userDao.updateUser(user);
-        session.commit();
     }
 
     @Test
@@ -78,6 +57,11 @@ public class MybatisAnnoTest {
     public void testFindOne(){
         User user = userDao.findById(41);
         System.out.println(user);
+
+        User user2 = userDao.findById(41);
+        System.out.println(user2);
+
+        System.out.println( "user == user2 ? " + (user == user2));
     }
 
     @Test
